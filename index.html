@@ -55,7 +55,7 @@
                 </ul>
             </div>
 
-            <form role="form">
+            <form role="form" id="nameRandomizer">
                 <div class="tab-content">
                     <!-- Step 1 -->
                     <div class="tab-pane active" role="tabpanel" id="step1">
@@ -155,10 +155,70 @@
                     <div class="tab-pane" role="tabpanel" id="step3">
                         <h3>Step 3</h3>
                         <p>This is step 3</p>
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="displayName1"> List <span class="badge">1</span></label>
+                                        <div id="displayName1"></div>
+                                    </div>
+                                    <div class="form-group">                                            
+                                        <div id="displayList1" class="displayList"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6" id="display-list-group-2">
+                                    <div class="form-group">
+                                        <label for="displayName2"> List <span class="badge">2</span></label>
+                                        <div id="displayName2"></div>
+                                    </div>
+                                    <div class="form-group">                                            
+                                        <div id="displayList2" class="displayList"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-6" id="display-list-group-3">
+                                        <div class="form-group">
+                                            <label for="displayName3"> List <span class="badge">3</span></label>
+                                            <div id="displayName3"></div>
+                                        </div>
+                                        <div class="form-group">                                            
+                                            <div id="displayList3" class="displayList"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" id="display-list-group-4">
+                                        <div class="form-group">
+                                            <label for="displayName4"> List <span class="badge">4</span></label>
+                                            <div id="displayName4"></div>
+                                        </div>
+                                        <div class="form-group">                                            
+                                            <div id="displayList4" class="displayList"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6" id="display-list-group-5">
+                                            <div class="form-group">
+                                                <label for="displayName5"> List <span class="badge">5</span></label>
+                                                <div id="displayName5"></div>
+                                            </div>
+                                            <div class="form-group">                                            
+                                                <div id="displayList5" class="displayList"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="display-list-group-6">
+                                            <div class="form-group">
+                                                <label for="displayName6"> List <span class="badge">6</span></label>
+                                                <div id="displayName6"></div>
+                                            </div>
+                                            <div class="form-group">                                            
+                                                <div id="displayList6" class="displayList"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                            <!--li><button type="button" class="btn btn-default next-step">Skip</button></li-->
+                            <li><button type="button" class="btn btn-primary btn-info-full" id="save-step-3">Run Randomizer</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="complete">
