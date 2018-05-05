@@ -145,3 +145,8 @@ h1 {
 #list-group-2, #list-group-3, #list-group-4, #list-group-5, #list-group-6 {
     display: none;
 }
+.displayList {
+    min-height: 100px;
+    border:1px solid #777;
+    background-color:#eee;
+}
