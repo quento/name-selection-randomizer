@@ -142,3 +142,6 @@ span.round-tab:hover {
 h1 {
     text-align: center;
 }
+#list-group-2, #list-group-3, #list-group-4, #list-group-5, #list-group-6 {
+    display: none;
+}
