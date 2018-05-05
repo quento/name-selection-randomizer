@@ -30,51 +30,128 @@ $(document).ready(function () {
             showList($list_num);
     });
 
+    // List is globally accessable
+    var $lists_obj_array = [];
+
     $("#save-step-2").on('click', function() {
         // TODO: Save list to JSON data
         var $list_num = $('#list-num').val();
+        
+        console.log("Array Length before " + $lists_obj_array.length);
+        // Use list length as array length
+        // Save list and title as single item in multidimensional array.
+        for(var i = 0; i <= $list_num-1; i++) {
+            var num = i + 1;
+            $lists_obj_array[i] = {
+                "number": num,
+                "listname": $('#listName' + num).val(),
+                "list": [ 
+                    CreateListArray($('#list' + num).val())//.split("\n")
+                ],
+            };            
+        }
 
-        var $listName1 = $('#listName1').val()
-        var $list1 = $('#list1').val()
+        // TROUBLESHOOTING - Look at the array
+        console.log("Num items " + $list_num);
+        console.log("Array Length after " + $lists_obj_array.length);
+        console.log($lists_obj_array);
+        $.each($lists_obj_array,function(index, value){
+            console.log(index + " - " + value);
+        });
 
-        console.log($listName1);
-        console.log($list1);
+        // Save to file
+        //SaveData($lists_obj_array);
 
-        var $list_array_1 =  $list1.split("\n");
-        console.log("2nd Item is " + $list_array_1[1]);
+        // Populate randomizer form
+        PopulateRandomizerFields($lists_obj_array);
+
     });
 });
 
 
 /******************** Functions *************************/
 
-function showList(list_num){
-    console.log("Num of lists " + list_num);
+function PopulateRandomizerFields(lists_obj_array) {
+    console.log("Data to pop " + lists_obj_array);
+
+    for(var i = 0; i <= lists_obj_array.length-1; i++) {
+        var listNumber = lists_obj_array[i].number;
+        console.log("number = " + lists_obj_array[i].number);
+        console.log("listname = " + lists_obj_array[i].listname);
+        console.log("list = " + lists_obj_array[i].list.join("~"));
+        // populate list views
+        $('#displayName' + listNumber).html(lists_obj_array[i].listname);
+        $('#displayList' + listNumber).html(lists_obj_array[i].list.join("\n"));
+    }
+}
+
+function scrollList(elem, speed) {
+    $(elem).animate(
+        {
+            marginTop: "300px"
+        },
+        {
+        duration: speed,
+        complete: function() {
+            $(elem).css("marginTop", "-450px");
+            scrollList(elem, speed);
+        }
+    });
+}
+function CreateListArray(list_txt){
+    list_txt = $.trim(list_txt);
+    return list_txt.split("\n");
+}
+
+function SaveData(lists_array){
+        
+    console.log("In saveDate" + JSON.stringify(lists_array));
+    // Save to file via ajax
+    $.ajax({
+        contentType: "application/json",
+        dataType: "json",
+        type: "POST",
+        url: "save.php",
+        data: JSON.stringify(lists_array)
+    })
+    .done(function(data){
+        console.log("Ajax success!" + data);
+    })
+    .fail(function(data) {
+        console.log("Ajax failed!\n" + JSON.stringify(data));
+    }).always(function(){
+        console.log("Ajax complete!");
+    });
+    
+      
+}
+function showList(list_num){    
     switch(list_num) {            
         case "6":
-            $('#list-group-5').css('display', 'block');
-            console.log("Goes in 5");            
+            $('#list-group-6').css('display', 'block');
+            $('#display-list-group-6').css('display', 'block');                
         case "5":
             $('#list-group-5').css('display', 'block');
-            console.log("Goes in 5");            
+            $('#display-list-group-5').css('display', 'block');                    
         case "4":
             $('#list-group-4').css('display', 'block');
-            console.log("Goes in 4");            
+            $('#display-list-group-4').css('display', 'block');                     
         case "3":
             $('#list-group-3').css('display', 'block');
-            console.log("Goes in 3");            
+            $('#display-list-group-3').css('display', 'block');                      
         case "2":
             $('#list-group-2').css('display', 'block');
-            console.log("Goes in 2");
+            $('#display-list-group-2').css('display', 'block');            
             break;
     }
 }
 
-function hideLists(list_num) {
-   console.log("hide attempt ...");
+function hideLists(list_num) {   
     $("div[id^='list-group-']").each(function() {
-        $(this).css('display', 'none');
-        console.log("hide ..");
+        $(this).css('display', 'none');        
+    }); 
+    $("div[id^='display-list-group-']").each(function() {
+        $(this).css('display', 'none');        
     });  
 }
 
