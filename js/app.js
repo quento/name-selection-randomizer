@@ -37,7 +37,7 @@ $(document).ready(function () {
         // TODO: Save list to JSON data
         var $list_num = $('#list-num').val();
         
-        console.log("Array Length before " + $lists_obj_array.length);
+        // console.log("Array Length before " + $lists_obj_array.length);
         // Use list length as array length
         // Save list and title as single item in multidimensional array.
         for(var i = 0; i <= $list_num-1; i++) {
@@ -48,23 +48,25 @@ $(document).ready(function () {
                 "list": [ 
                     CreateListArray($('#list' + num).val())//.split("\n")
                 ],
-            };            
+            };     
+            
         }
 
         // TROUBLESHOOTING - Look at the array
-        console.log("Num items " + $list_num);
-        console.log("Array Length after " + $lists_obj_array.length);
-        console.log($lists_obj_array);
-        $.each($lists_obj_array,function(index, value){
-            console.log(index + " - " + value);
-        });
+        // console.log("Num items " + $list_num);
+        // console.log("Array Length after " + $lists_obj_array.length);
+        // console.log($lists_obj_array);
+        // $.each($lists_obj_array,function(index, value){
+        //     console.log(index + " - " + value);
+        // });
 
         // Save to file
         //SaveData($lists_obj_array);
 
         // Populate randomizer form
-        PopulateRandomizerFields($lists_obj_array);
-
+        //PopulateRandomizerFields($lists_obj_array);
+        
+        addTextToCanvas($lists_obj_array);       
     });
 });
 
@@ -81,8 +83,40 @@ function PopulateRandomizerFields(lists_obj_array) {
         console.log("list = " + lists_obj_array[i].list.join("~"));
         // populate list views
         $('#displayName' + listNumber).html(lists_obj_array[i].listname);
-        $('#displayList' + listNumber).html(lists_obj_array[i].list.join("\n"));
+        //$('#displayList' + listNumber).html(lists_obj_array[i].list.join("\n"));
+        // Get the list from select box in step 1.
+        $('#displayList' + listNumber).html($('#list' + listNumber).val().replace(/(?:\r\n|\r|\n)/g,"<br>"));
+        
     }
+}
+
+function addTextToCanvas(lists_obj_array){
+    //console.log("lists_obj_array => " + lists_obj_array);
+    
+    for(var j = 0; j <= lists_obj_array.length-1; j++){     
+        var line_spacing = 35; 
+
+        //console.log(j + " - " + lists_obj_array[j].list[0]);
+        var item_num = j + 1;
+        // Create the canvas object
+        var canvas = document.getElementById("displayList" + item_num);
+        //console.log(canvas);
+        var ctx = canvas.getContext("2d");
+        
+        // Basic text settings
+        ctx.textBasline = "top";
+        ctx.textAlign = "left";
+        ctx.font = '34px "Segoe UI"';
+        ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+        
+        for(var i = 0; i <= lists_obj_array[j].list[0].length-1; i++){            
+            ctx.fillText(lists_obj_array[j].list[0][i], 0, line_spacing);
+            line_spacing += 35;
+        }
+    }      
+}
+function runRandomizer(lists_obj_array){
+   
 }
 
 function scrollList(elem, speed) {
