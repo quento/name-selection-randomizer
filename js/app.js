@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    "use strict";
+
     //Initialize tooltips
     $('.nav-tabs > li a[title]').tooltip();
     
@@ -30,9 +32,19 @@ $(document).ready(function () {
             showList($list_num);
     });
 
+    /************************** Name Randomizer  **************************/
     // List is globally accessable
     var $lists_obj_array = [];
+    // Individual lists used per session
+    var $list1 = [],
+        $list2 = [], 
+        $list3 = [], 
+        $list4 = [], 
+        $list5 = [], 
+        $list6 = [];
     var canvas, ctx;
+    
+    
 
     $("#save-step-2").on('click', function() {
         
@@ -74,29 +86,39 @@ $(document).ready(function () {
     $("#save-step-3").on('click', function(){
         
         // Run marquee to scroll list
-        var list1anim = setTimeout(function(){
-            scrollList("displayList1");
-        }, 500);
+        var startScroll = setTimeout(function(){ 
+                scrollList("displayList1"); 
+            }, 
+            500);
+        
+        
+        // play sound
+        $("#play_spin_sound")[0].play();
         //scrollList("displayList2");
 
         // Randomly select winner by picking random index value
-        var list_array = $lists_obj_array[0].list[0]
-        var winner_index = Math.floor(Math.random() * list_array.length);
-        var random_winner = list_array[winner_index];
+        $list1 = $lists_obj_array[0].list[0]
+        var winner_index = Math.floor(Math.random() * $list1.length);
+        var random_winner = $list1[winner_index];
         
         console.log($lists_obj_array[0].list[0]);
         console.log("Random winnner " + random_winner);
 
         // Pop selected from list
-        list_array.splice(winner_index, 1);
+        $list1.splice(winner_index, 1);
         
-        console.log(list_array);
+        console.log("Winner removed from list" + $list1);
         // After 6 seconds, Show winner, Use setInterval
         setTimeout(function(){
-            $('#list1-winners').html(random_winner);
-        }, 6000);
+            // Stop marquee
+            $("#step3 [id^='displayList'").marquee('pause');
+            
+            $('#list1-winners').append(random_winner + "<br>");
+            // Update list with items minus winner
+            //$('#displayList1').html($list1.toString().replace("/(?:\,|\r|\n)/g","<br>"));  
+        },6500);
         
-        // Stop marquee
+        
 
         // Reload list minus winner
               
@@ -145,14 +167,14 @@ function runRandomizer(lists_obj_array){
 function scrollList(element_name) {
     // Speed up marquee
     $('#' + element_name)
-    .bind('beforeStarting', function(){
-        // play spinning wheel audio
-        $("#play_spin_sound")[0].play();
-    })
-    .bind('finished', function(){
-        // play winner found audio
-        $("#play_winner_sound")[0].play();
-    })
+    // .bind('beforeStarting', function(){
+    //     // play spinning wheel audio
+    //     $("#play_spin_sound")[0].play();
+    // })
+    // .bind('finished', function(){
+    //     // play winner found audio
+    //     $("#play_winner_sound")[0].play();
+    // })
     .marquee({ 
         duration: 500,
         speed:850,
