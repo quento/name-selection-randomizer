@@ -103,6 +103,9 @@ function addTextToCanvas(lists_obj_array){
         //console.log(canvas);
         var ctx = canvas.getContext("2d");
         
+        // Display the list name
+        $('#displayName' + item_num).html(lists_obj_array[j].listname);
+
         // Basic text settings
         ctx.textBasline = "top";
         ctx.textAlign = "left";
@@ -116,7 +119,9 @@ function addTextToCanvas(lists_obj_array){
     }      
 }
 function runRandomizer(lists_obj_array){
-   
+   // Make canvas scroll, fast then slow
+
+   // Select item from array
 }
 
 function scrollList(elem, speed) {
@@ -132,6 +137,7 @@ function scrollList(elem, speed) {
         }
     });
 }
+
 function CreateListArray(list_txt){
     list_txt = $.trim(list_txt);
     return list_txt.split("\n");
@@ -155,9 +161,7 @@ function SaveData(lists_array){
         console.log("Ajax failed!\n" + JSON.stringify(data));
     }).always(function(){
         console.log("Ajax complete!");
-    });
-    
-      
+    });    
 }
 function showList(list_num){    
     switch(list_num) {            
