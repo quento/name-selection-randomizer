@@ -132,61 +132,6 @@ function PopulateRandomizerFields(lists_obj_array) {
     runRandomizer(lists_obj_array);
 }
 
-function RunTextTopToBottom() {
-    step++;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.save();
-    ctx.translate(canvas.width / 2, step);
-    ctx.fillText("John Doe", 0, 0);
-    ctx.fillText("Peter Pan", 0, 30);
-    ctx.fillText("Jane Jax", 0, 60);
-    ctx.fillText("Paul Young", 0, 90);
-    ctx.fillText("Matt Old", 0, 120);
-    ctx.restore();
-    if (step == steps)
-        step = 0;
-    if (step < steps)
-        var t = setTimeout('RunTextTopToBottom()', 15);
-}
-
-function addTextToCanvas(lists_obj_array){    
-    var item_num;
-
-    for(var j = 0; j <= lists_obj_array.length-1; j++){     
-        var line_spacing = 35; 
-        // change number from zero based to work with content ids.
-        item_num = j + 1;
-        // Create the canvas object
-        canvas = document.getElementById("displayList" + item_num);
-        //console.log(canvas);
-        ctx = canvas.getContext("2d");
-        
-        // Display the list name
-        $('#displayName' + item_num).html(lists_obj_array[j].listname);
-
-        // Basic text settings
-        //ctx.textBasline = "top";
-        
-        //ctx.font = '34px "Segoe UI"';
-        //ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
-        ctx.fillStyle = "blue";
-        ctx.font = "20pt Verdana";
-        //ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        step = 0;
-        steps = canvas.height + 10;
-        
-        for(var i = 0; i <= lists_obj_array[j].list[0].length-1; i++){            
-            ctx.fillText(lists_obj_array[j].list[0][i], 0, line_spacing);
-            line_spacing += 35;
-        }
-        //RunTextTopToBottom(); 
-               
-    }      
-}
-
-
-
 function runRandomizer(lists_obj_array){
    // Make canvas scroll, fast then slow
 
