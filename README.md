@@ -13,3 +13,6 @@ I created this app to allow users to copy and past a list of names and be able t
     * Ability to create multiple lists
     * Show scroll of names during random selection
     * Save entered names for future use an reruns.
+
+## Demo
+Check out the online demo: http://quentino.org/demo/
