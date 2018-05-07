@@ -24,36 +24,39 @@ html {
 .container .text-muted {
     margin: 10px 0;
 }
+
 /********************* wizard *************************/
 .wizard {
     margin: 20px auto;
     background: #fff;
 }
 
-    .wizard .nav-tabs {
-        position: relative;
-        margin: 40px auto;
-        margin-bottom: 0;
-        border-bottom-color: #e0e0e0;
-    }
+.wizard .nav-tabs {
+    position: relative;
+    margin: 40px auto;
+    margin-bottom: 0;
+    border-bottom-color: #e0e0e0;
+}
 
-    .wizard > div.wizard-inner {
-        position: relative;
-    }
+.wizard > div.wizard-inner {
+    position: relative;
+}
 
 .connecting-line {
     height: 2px;
     background: #e0e0e0;
-    position: absolute;
-    width: 80%;
+    position:absolute;
+    width: 50%;
     margin: 0 auto;
     left: 0;
-    right: 0;
+    right: 90px;
     top: 50%;
     z-index: 1;
 }
 
-.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+.wizard .nav-tabs > li.active > a, 
+.wizard .nav-tabs > li.active > a:hover, 
+.wizard .nav-tabs > li.active > a:focus {
     color: #555555;
     cursor: default;
     border: 0;
@@ -126,9 +129,9 @@ span.round-tab:hover {
     padding: 0;
 }
 
-    .wizard .nav-tabs > li a:hover {
-        background: transparent;
-    }
+.wizard .nav-tabs > li a:hover {
+    background: transparent;
+}
 
 .wizard .tab-pane {
     position: relative;
@@ -188,4 +191,13 @@ h1 {
 /*************** Steb buttons *******************/
 .step-buttons {
     margin-top: 30px;    
+}
+.winner-area {
+    bordeR:1px solid #eee;
+    padding: 5px;
+    background-color: RGBA(255, 255, 0, 0.3);
+    font-size:120%;
+}
+.winner-container {
+    display: none;
 }
