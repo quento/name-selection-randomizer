@@ -18,7 +18,6 @@
                 <div class="wizard-inner">
                     <div class="connecting-line"></div>
                     <ul class="nav nav-tabs" role="tablist">
-
                         <li role="presentation" class="active">
                             <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1 - How Many Lists?">
                                 <span class="round-tab">
@@ -35,17 +34,9 @@
                             </a>
                         </li>
                         <li role="presentation" class="disabled">
-                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                            <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3 - Run Randomizer">
                                 <span class="round-tab">
                                     <i class="glyphicon glyphicon-tasks"></i>
-                                </span>
-                            </a>
-                        </li>
-
-                        <li role="presentation" class="disabled">
-                            <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
-                                <span class="round-tab">
-                                    <i class="glyphicon glyphicon-ok"></i>
                                 </span>
                             </a>
                         </li>
@@ -59,15 +50,16 @@
                             <div class="page-header">
                                 <h2><i class="glyphicon glyphicon-list"></i> Step 1 - How Many Lists?</h2>
                             </div>
+                            <p class="lead">To get started select the number of lists you'll provide.</p>
                             <div class="form-group">
                                 <label for="list-num">How many lists will you be adding?</label>                        
                                 <select id="list-num" name="list-num" class="form-control">
                                     <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
+                                    <option value="2" disabled>2</option>
+                                    <option value="3" disabled>3</option>
+                                    <option value="4" disabled>4</option>
+                                    <option value="5" disabled>5</option>
+                                    <option value="6" disabled>6</option>
                                 </select>
                             </div>
                             <div class="center-block text-center step-buttons">
@@ -79,16 +71,27 @@
                             <div class="page-header">
                                 <h2><i class="glyphicon glyphicon-edit"></i> Step 2 - Add Lists</h2>
                             </div>
-                            <p>Copy and paste the list items below</p>
+                            <p class="lead">Copy and paste the list items below</p>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="listName1"> List <span class="badge">1</span></label>
                                         <input type="text" class="form-control" id="listName1" placeholder="List Name">
                                     </div>
                                     <div class="form-group">
                                             <label for="list1">List</label>
-                                        <textarea id="list1" class="form-control" rows="3" placeholder="Add list here"></textarea>
+                                        <textarea id="list1" class="form-control" rows="3" placeholder="Add list here">
+                                                Dave
+                                                Lisa
+                                                Joe
+                                                Mary
+                                                John
+                                                Pat
+                                                Rob
+                                                Linda
+                                                Mike
+                                                Susan                                                
+                                        </textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6" id="list-group-2">
@@ -98,7 +101,10 @@
                                     </div>
                                     <div class="form-group">
                                             <label for="list2">List</label>
-                                        <textarea id="list2" class="form-control" rows="3" placeholder="Add list here"></textarea>
+                                        <textarea id="list2" class="form-control" rows="3" placeholder="Add list here">Paul
+                                                Jacob
+                                                Smith
+                                                MacFerry</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -110,7 +116,18 @@
                                         </div>
                                         <div class="form-group">
                                                 <label for="list3">List</label>
-                                            <textarea id="list3" class="form-control" rows="3" placeholder="Add list here"></textarea>
+                                            <textarea id="list3" class="form-control" rows="3" placeholder="Add list here">
+                                                    Dave
+                                                    Lisa
+                                                    Joe
+                                                    Mary
+                                                    John
+                                                    Pat
+                                                    Rob
+                                                    Linda
+                                                    Mike
+                                                    Susan                                                    
+                                            </textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6"  id="list-group-4">
@@ -155,9 +172,13 @@
                         <!-- Step 3 -->
                         <div class="tab-pane" role="tabpanel" id="step3">
                             <div class="page-header">
-                                <h2><i class="glyphicon glyphicon-tasks"></i> Step 3</h2>
+                                <h2><i class="glyphicon glyphicon-tasks"></i> Step 3 - Run Randomizer</h2>
                             </div>
-                            <p>This is step 3</p>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p class="lead">Click on "Run Randomizer" to select a lucky winner from your list(s)!</p>
+                                </div>
+                            </div>                            
                             <div class="row">
                                     <audio id="play_spin_sound">
                                         <source src="media/spin-wheel.mp3" type="audio/mpeg">
@@ -165,14 +186,17 @@
                                     <audio id="play_winner_sound">
                                         <source src="media/winner-sound.mp3" type="audio/mpeg">
                                     </audio>
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="displayName1"> List <span class="badge">1</span></label>
-                                            <div id="displayName1"></div>
+                                            <div id="displayName1" class="lead"></div>
                                         </div>
                                         <div class="form-group">                                            
                                             <div id="displayList1" class="displayList marquee"></div>
-                                            <div id="list1-winners" class="winner-area"></div>
+                                            <div class="winner-container">
+                                                <h4 class="text-muted">WINNERS SQUARE</h4>
+                                                <div id="list1-winners" class="winner-area"></div>    
+                                            </div>                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6" id="display-list-group-2">
@@ -181,8 +205,11 @@
                                             <div id="displayName2"></div>                                            
                                         </div>
                                         <div class="form-group">                                            
-                                            <div id="displayList2 marquee" class="displayList"></div>
-                                            <div id="list2-winners" class="winner-area"></div>                                            
+                                            <div id="displayList2" class="displayList"></div>
+                                            <div class="winner-container">
+                                                <h4 class="text-muted">WINNERS SQUARE</h4>
+                                                <div id="list2-winners" class="winner-area"></div>    
+                                            </div>                                              
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +221,10 @@
                                             </div>
                                             <div class="form-group">                                            
                                                 <div id="displayList3" class="displayList"></div>
-                                                <div id="list3-winners" class="winner-area"></div>   
+                                                <div class="winner-container">
+                                                    <h4 class="text-muted">WINNERS SQUARE</h4>
+                                                    <div id="list3-winners" class="winner-area"></div>    
+                                                </div>      
                                             </div>
                                         </div>
                                         <div class="col-md-6" id="display-list-group-4">
@@ -204,7 +234,10 @@
                                             </div>
                                             <div class="form-group">                                            
                                                 <div id="displayList4" class="displayList"></div>
-                                                <div id="list4-winners" class="winner-area"></div>   
+                                                <div class="winner-container">
+                                                    <h4 class="text-muted">WINNERS SQUARE</h4>
+                                                    <div id="list4-winners" class="winner-area"></div>    
+                                                </div>    
                                             </div>
                                         </div>
                                     </div>
@@ -216,7 +249,10 @@
                                                 </div>
                                                 <div class="form-group">                                            
                                                     <div id="displayList5" class="displayList"></div>
-                                                    <div id="list5-winners" class="winner-area"></div>   
+                                                    <div class="winner-container">
+                                                        <h4 class="text-muted">WINNERS SQUARE</h4>
+                                                        <div id="list5-winners" class="winner-area"></div>    
+                                                    </div>     
                                                 </div>
                                             </div>
                                             <div class="col-md-6" id="display-list-group-6">
@@ -226,7 +262,10 @@
                                                 </div>
                                                 <div class="form-group">                                            
                                                     <div id="displayList6" class="displayList"></div>
-                                                    <div id="list6-winners" class="winner-area"></div>   
+                                                    <div class="winner-container">
+                                                        <h4 class="text-muted">WINNERS SQUARE</h4>
+                                                        <div id="list6-winners" class="winner-area"></div>    
+                                                    </div>      
                                                 </div>
                                             </div>
                                         </div>
@@ -236,10 +275,7 @@
                                 <button type="button" class="btn btn-primary btn-lg btn-info-full" id="save-step-3">Run Randomizer</button>
                             </div>
                         </div>
-                        <div class="tab-pane" role="tabpanel" id="complete">
-                            <h3>Complete</h3>
-                            <p>You have successfully completed all steps.</p>
-                        </div>
+                       
                         <div class="clearfix"></div>
                     </div>
                 </form>
@@ -251,6 +287,7 @@
             <p class="text-muted text-center">Quentin Ochieng | Copyright &copy 2018 </p>
         </div>
     </footer>
+    
     <!-- JavaSCript Files -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.marquee@1.5.0/jquery.marquee.min.js" type="text/javascript"></script>
