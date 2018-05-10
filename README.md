@@ -15,4 +15,4 @@ I created this app to allow users to copy and past a list of names and be able t
     * Save entered names for future use an reruns.
 
 ## Demo
-Check out the online demo: http://quentino.org/demo/
+Check out the online demo: www.quentino.org/demo/name-selection-randomizer
